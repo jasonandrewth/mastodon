@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 // import Link from 'next/link'
 // import axios from 'axios'
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 
 import styles from '../styles/Home.module.css'
 
 import WebGL from '../components/WebGL'
 
 
-const Index = ({ initialLinks }) => {
+const Index = () => {
 
-	console.log(initialLinks)
+	// console.log(initialLinks)
   // const [links, setLinks] = useState([])
   const [initialClick, setInitialClick] = useState(false)
 
@@ -117,10 +117,10 @@ const Index = ({ initialLinks }) => {
     //   linkList.push(`https://${instance.name}`)
     //   //setLinks(newLinks)
     // })
-		initialLinks.map(link => {
-			// console.log(link.url)
-			sitesList.push(link.url)
-		})
+		// initialLinks.map(link => {
+		// 	// console.log(link.url)
+		// 	sitesList.push(link.url)
+		// })
 
     init()
   })
@@ -161,29 +161,29 @@ const Index = ({ initialLinks }) => {
 //   }
 // }
 
-Index.getInitialProps = async function() {
+// Index.getInitialProps = async function() {
 
-		const prisma = new PrismaClient()
+// 		const prisma = new PrismaClient()
 
-    const links = await prisma.link.findMany()
+//     const links = await prisma.link.findMany()
 
-  return {
-			initialLinks: links,
-			hi: 'hi'
-  }
-}
+//   return {
+// 			initialLinks: links,
+// 			hi: 'hi'
+//   }
+// }
 
-async function saveLink (link) {
-	const response = await fetch('/api/links', {
-		method: 'POST',
-		body: JSON.stringify(link)
-	})
+// async function saveLink (link) {
+// 	const response = await fetch('/api/links', {
+// 		method: 'POST',
+// 		body: JSON.stringify(link)
+// 	})
 
-	if (!response.ok) {
-		throw new Error(response.statusText)
-	}
+// 	if (!response.ok) {
+// 		throw new Error(response.statusText)
+// 	}
 
-	return await response.json()
-}
+// 	return await response.json()
+// }
 
 export default Index
